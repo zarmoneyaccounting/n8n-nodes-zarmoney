@@ -133,8 +133,7 @@ export class ZarmoneyTrigger implements INodeType {
       async checkExists(this: IHookFunctions): Promise<boolean> {
         Logger.info(`-------------------------checkExists`);
 
-        let webhookUrl = this.getNodeWebhookUrl('default') as string;
-        webhookUrl = webhookUrl.replace('http://localhost:5678', 'https://zarmoney.ngrok.io');
+        const webhookUrl = this.getNodeWebhookUrl('default') as string;
 
         const webhookData = this.getWorkflowStaticData('node');
         if (webhookData?.webhookId) {
@@ -149,9 +148,6 @@ export class ZarmoneyTrigger implements INodeType {
 
       async create(this: IHookFunctions): Promise<boolean> {
         Logger.info(`-------------------------create`);
-
-        let webhookUrl = this.getNodeWebhookUrl('default') as string;
-        webhookUrl = webhookUrl.replace('http://localhost:5678', 'https://zarmoney.ngrok.io');
 
         const eventData = [] as any;
 
@@ -170,6 +166,7 @@ export class ZarmoneyTrigger implements INodeType {
           }
         });
 
+        const webhookUrl = this.getNodeWebhookUrl('default') as string;
         Logger.info(`webhookUrl: ${webhookUrl}`);
         Logger.info(`events: ${JSON.stringify(eventData, null, 2)}`);
 
