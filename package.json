@@ -1,19 +1,23 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-zarmoney",
   "version": "0.1.0",
   "description": "",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "n8n",
+    "zarmoney",
+    "trigger",
+    "actions"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "ZarMoney",
+    "email": "dev@zarmoney.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/zarmoneyaccounting/n8n-nodes-zarmoney.git"
   },
   "engines": {
     "node": ">=20.15"
@@ -33,12 +37,11 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/ZarMoneyOAuth2Api.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/ZarMoneyNode/ZarMoney.node.js",
+      "dist/nodes/ZarMoneyNode/ZarMoneyTriggerNode.node.js"
     ]
   },
   "devDependencies": {
