@@ -41,7 +41,7 @@
     ],
     "nodes": [
       "dist/nodes/ZarMoney/Zarmoney.node.js",
-      "dist/nodes/ZarMoney/ZarmoneyTriggerNode.node.js"
+      "dist/nodes/ZarMoney/ZarmoneyTrigger.node.js"
     ]
   },
   "devDependencies": {
