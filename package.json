@@ -40,8 +40,8 @@
       "dist/credentials/ZarMoneyOAuth2Api.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ZarMoneyNode/ZarMoney.node.js",
-      "dist/nodes/ZarMoneyNode/ZarMoneyTriggerNode.node.js"
+      "dist/nodes/ZarMoney/Zarmoney.node.js",
+      "dist/nodes/ZarMoney/ZarmoneyTriggerNode.node.js"
     ]
   },
   "devDependencies": {

@@ -21,7 +21,7 @@ import {
   salesOrderOps
 } from './Ops';
 
-export class ZarMoney implements INodeType {
+export class Zarmoney implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'ZarMoney',
     name: 'zarmoney',

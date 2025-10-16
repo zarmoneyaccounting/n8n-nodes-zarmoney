@@ -10,7 +10,7 @@ import { NodeConnectionTypes, /*NodeOperationError,*/ LoggerProxy as Logger } fr
 
 import { zarmoneyApiRequest, decapitalizeFirstLetter } from './GenericFunctions';
 
-export class ZarMoneyTrigger implements INodeType {
+export class ZarmoneyTrigger implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'ZarMoney Trigger',
     name: 'zarmoneyTrigger',
@@ -66,62 +66,62 @@ export class ZarMoneyTrigger implements INodeType {
           {
             name: 'Customer Created',
             value: 'Customer.create',
-            description: 'Occurs whenever a customer is created.',
+            description: 'Occurs whenever a customer is created',
           },
           {
             name: 'Customer Deleted',
             value: 'Customer.delete',
-            description: 'Occurs whenever a customer is deleted.',
+            description: 'Occurs whenever a customer is deleted',
           },
           {
             name: 'Customer Updated',
             value: 'Customer.update',
-            description: 'Occurs whenever a customer is updated.',
-          },
-          {
-            name: 'Invoice Created',
-            value: 'Invoice.create',
-            description: 'Occurs whenever an invoice is created.',
-          },
-          {
-            name: 'Invoice Deleted',
-            value: 'Invoice.delete',
-            description: 'Occurs whenever an invoice is deleted.',
-          },
-          {
-            name: 'Invoice Updated',
-            value: 'Invoice.update',
-            description: 'Occurs whenever an invoice is updated.',
-          },
-          {
-            name: 'Sales Order Created',
-            value: 'SalesOrder.create',
-            description: 'Occurs whenever a sales order is created.',
-          },
-          {
-            name: 'Sales Order Deleted',
-            value: 'SalesOrder.delete',
-            description: 'Occurs whenever a sales order is deleted.',
-          },
-          {
-            name: 'Sales Order Updated',
-            value: 'SalesOrder.update',
-            description: 'Occurs whenever a sales order is updated.',
+            description: 'Occurs whenever a customer is updated',
           },
           {
             name: 'Estimate Created',
             value: 'Quote.create',
-            description: 'Occurs whenever an estimate is created.',
+            description: 'Occurs whenever an estimate is created',
           },
           {
             name: 'Estimate Deleted',
             value: 'Quote.delete',
-            description: 'Occurs whenever an estimate is deleted.',
+            description: 'Occurs whenever an estimate is deleted',
           },
           {
             name: 'Estimate Updated',
             value: 'Quote.update',
-            description: 'Occurs whenever an estimate is updated.',
+            description: 'Occurs whenever an estimate is updated',
+          },
+          {
+            name: 'Invoice Created',
+            value: 'Invoice.create',
+            description: 'Occurs whenever an invoice is created',
+          },
+          {
+            name: 'Invoice Deleted',
+            value: 'Invoice.delete',
+            description: 'Occurs whenever an invoice is deleted',
+          },
+          {
+            name: 'Invoice Updated',
+            value: 'Invoice.update',
+            description: 'Occurs whenever an invoice is updated',
+          },
+          {
+            name: 'Sales Order Created',
+            value: 'SalesOrder.create',
+            description: 'Occurs whenever a sales order is created',
+          },
+          {
+            name: 'Sales Order Deleted',
+            value: 'SalesOrder.delete',
+            description: 'Occurs whenever a sales order is deleted',
+          },
+          {
+            name: 'Sales Order Updated',
+            value: 'SalesOrder.update',
+            description: 'Occurs whenever a sales order is updated',
           },
         ]
       }

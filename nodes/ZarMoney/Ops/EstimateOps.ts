@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const invoiceOps: INodeProperties[] = [
+export const estimateOps: INodeProperties[] = [
   {
     displayName: 'Operation',
     name: 'operation',
@@ -8,35 +8,35 @@ export const invoiceOps: INodeProperties[] = [
     noDataExpression: true,
     displayOptions: {
       show: {
-        resource: ['invoice'],
+        resource: ['estimate'],
       },
     },
     options: [
       {
         name: 'Get',
         value: 'get',
-        description: 'Returns a single invoice by ID.',
-        action: 'Get an invoice',
+        description: 'Returns a single estimate by ID',
+        action: 'Get an estimate',
       },
       {
         name: 'Get Many',
         value: 'getAll',
-        description: 'Returns all invoices.',
-        action: 'Get many invoices',
+        description: 'Returns many estimates',
+        action: 'Get many estimates',
       },
     ],
     default: 'getAll',
   },
   {
-    displayName: 'Invoice ID',
+    displayName: 'Estimate ID',
     name: 'id',
     type: 'number',
     required: true,
     default: '',
-    description: 'The ID of the invoice to retrieve.',
+    description: 'The ID of the estimate to retrieve',
     displayOptions: {
       show: {
-        resource: ['invoice'],
+        resource: ['estimate'],
         operation: ['get'],
       },
     },
@@ -45,30 +45,30 @@ export const invoiceOps: INodeProperties[] = [
     displayName: 'Expand User Info',
     name: 'expandUserInfo',
     type: 'boolean',
-    required: false,
+
     default: false,
-    description: 'Turn this on to expand associated users\' info.',
+    description: 'Whether to expand associated users\' info',
     displayOptions: {
       show: {
-        resource: ['invoice'],
+        resource: ['estimate'],
         operation: ['get', 'getAll'],
       },
     },
   },
   {
-    displayName: 'Invoices matching all filters (if any)',
+    displayName: 'Estimates Matching All Filters (if Any)',
     name: 'filters',
     type: 'collection',
     placeholder: 'Add Field',
     default: {},
     options: [
       {
-        displayName: 'Invoice ID',
-        name: 'id',
-        type: 'number',
-        default: 0,
-        placeholder: 'Invoice ID',
-        description: 'Fetch an invoice by its ID.',
+        displayName: 'Closed',
+        name: 'isClosed',
+        type: 'boolean',
+        default: false,
+        placeholder: 'Closed',
+        description: 'Whether to fetch closed estimates only',
       },
       {
         displayName: 'Customer ID',
@@ -76,7 +76,7 @@ export const invoiceOps: INodeProperties[] = [
         type: 'number',
         default: 0,
         placeholder: 'Customer ID',
-        description: 'Fetch invoices by customer ID.',
+        description: 'Fetch estimates by customer ID',
       },
       {
         displayName: 'Customer Name',
@@ -84,7 +84,7 @@ export const invoiceOps: INodeProperties[] = [
         type: 'string',
         default: '',
         placeholder: 'Customer Name',
-        description: 'Fetch invoices by customer name.',
+        description: 'Fetch estimates by customer name',
       },
       {
         displayName: 'Customer Phone#',
@@ -92,20 +92,20 @@ export const invoiceOps: INodeProperties[] = [
         type: 'string',
         default: '',
         placeholder: 'Phone#',
-        description: 'Fetch invoices by customer\'s phone number.',
+        description: 'Fetch estimates by customer\'s phone number',
       },
       {
-        displayName: 'Closed',
-        name: 'isClosed',
-        type: 'boolean',
-        default: false,
-        placeholder: 'Closed',
-        description: 'Fetch either open or closed invoices.',
+        displayName: 'Estimate ID',
+        name: 'id',
+        type: 'number',
+        default: 0,
+        placeholder: 'Estimate ID',
+        description: 'Fetch an estimate by its ID',
       }
     ],
     displayOptions: {
       show: {
-        resource: ['invoice'],
+        resource: ['estimate'],
         operation: ['getAll'],
       },
     },

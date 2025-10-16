@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const estimateOps: INodeProperties[] = [
+export const salesOrderOps: INodeProperties[] = [
   {
     displayName: 'Operation',
     name: 'operation',
@@ -8,35 +8,35 @@ export const estimateOps: INodeProperties[] = [
     noDataExpression: true,
     displayOptions: {
       show: {
-        resource: ['estimate'],
+        resource: ['salesOrder'],
       },
     },
     options: [
       {
         name: 'Get',
         value: 'get',
-        description: 'Returns a single estimate by ID.',
-        action: 'Get an estimate',
+        description: 'Returns a single sales order by ID',
+        action: 'Get a sales order',
       },
       {
         name: 'Get Many',
         value: 'getAll',
-        description: 'Returns all estimates.',
-        action: 'Get many estimates',
+        description: 'Returns many sales orders',
+        action: 'Get many sales orders',
       },
     ],
     default: 'getAll',
   },
   {
-    displayName: 'Estimate ID',
+    displayName: 'Sales Order ID',
     name: 'id',
     type: 'number',
     required: true,
     default: '',
-    description: 'The ID of the estimate to retrieve.',
+    description: 'The ID of the sales order to retrieve',
     displayOptions: {
       show: {
-        resource: ['estimate'],
+        resource: ['salesOrder'],
         operation: ['get'],
       },
     },
@@ -45,30 +45,30 @@ export const estimateOps: INodeProperties[] = [
     displayName: 'Expand User Info',
     name: 'expandUserInfo',
     type: 'boolean',
-    required: false,
+
     default: false,
-    description: 'Turn this on to expand associated users\' info.',
+    description: 'Whether to expand associated users\' info',
     displayOptions: {
       show: {
-        resource: ['estimate'],
+        resource: ['salesOrder'],
         operation: ['get', 'getAll'],
       },
     },
   },
   {
-    displayName: 'Estimates matching all filters (if any)',
+    displayName: 'Sales Orders Matching All Filters (if Any)',
     name: 'filters',
     type: 'collection',
     placeholder: 'Add Field',
     default: {},
     options: [
       {
-        displayName: 'Estimate ID',
-        name: 'id',
-        type: 'number',
-        default: 0,
-        placeholder: 'Estimate ID',
-        description: 'Fetch an estimate by its ID.',
+        displayName: 'Closed',
+        name: 'isClosed',
+        type: 'boolean',
+        default: false,
+        placeholder: 'Closed',
+        description: 'Whether to fetch closed sales orders only',
       },
       {
         displayName: 'Customer ID',
@@ -76,7 +76,7 @@ export const estimateOps: INodeProperties[] = [
         type: 'number',
         default: 0,
         placeholder: 'Customer ID',
-        description: 'Fetch estimates by customer ID.',
+        description: 'Fetch sales orders by customer ID',
       },
       {
         displayName: 'Customer Name',
@@ -84,7 +84,7 @@ export const estimateOps: INodeProperties[] = [
         type: 'string',
         default: '',
         placeholder: 'Customer Name',
-        description: 'Fetch estimates by customer name.',
+        description: 'Fetch sales orders by customer name',
       },
       {
         displayName: 'Customer Phone#',
@@ -92,20 +92,20 @@ export const estimateOps: INodeProperties[] = [
         type: 'string',
         default: '',
         placeholder: 'Phone#',
-        description: 'Fetch estimates by customer\'s phone number.',
+        description: 'Fetch sales orders by customer\'s phone number',
       },
       {
-        displayName: 'Closed',
-        name: 'isClosed',
-        type: 'boolean',
-        default: false,
-        placeholder: 'Closed',
-        description: 'Fetch either open or closed estimates.',
+        displayName: 'Sales Order ID',
+        name: 'id',
+        type: 'number',
+        default: 0,
+        placeholder: 'Sales Order ID',
+        description: 'Fetch a sales order by its ID',
       }
     ],
     displayOptions: {
       show: {
-        resource: ['estimate'],
+        resource: ['salesOrder'],
         operation: ['getAll'],
       },
     },

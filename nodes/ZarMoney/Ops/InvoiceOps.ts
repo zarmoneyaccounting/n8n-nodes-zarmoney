@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const salesOrderOps: INodeProperties[] = [
+export const invoiceOps: INodeProperties[] = [
   {
     displayName: 'Operation',
     name: 'operation',
@@ -8,35 +8,35 @@ export const salesOrderOps: INodeProperties[] = [
     noDataExpression: true,
     displayOptions: {
       show: {
-        resource: ['salesOrder'],
+        resource: ['invoice'],
       },
     },
     options: [
       {
         name: 'Get',
         value: 'get',
-        description: 'Returns a single sales order by ID.',
-        action: 'Get a sales order',
+        description: 'Returns a single invoice by ID',
+        action: 'Get an invoice',
       },
       {
         name: 'Get Many',
         value: 'getAll',
-        description: 'Returns all sales orders.',
-        action: 'Get many sales orders',
+        description: 'Returns many invoices',
+        action: 'Get many invoices',
       },
     ],
     default: 'getAll',
   },
   {
-    displayName: 'Sales Order ID',
+    displayName: 'Invoice ID',
     name: 'id',
     type: 'number',
     required: true,
     default: '',
-    description: 'The ID of the sales order to retrieve.',
+    description: 'The ID of the invoice to retrieve',
     displayOptions: {
       show: {
-        resource: ['salesOrder'],
+        resource: ['invoice'],
         operation: ['get'],
       },
     },
@@ -45,30 +45,30 @@ export const salesOrderOps: INodeProperties[] = [
     displayName: 'Expand User Info',
     name: 'expandUserInfo',
     type: 'boolean',
-    required: false,
+
     default: false,
-    description: 'Turn this on to expand associated users\' info.',
+    description: 'Whether to expand associated users\' info',
     displayOptions: {
       show: {
-        resource: ['salesOrder'],
+        resource: ['invoice'],
         operation: ['get', 'getAll'],
       },
     },
   },
   {
-    displayName: 'Sales orders matching all filters (if any)',
+    displayName: 'Invoices Matching All Filters (if Any)',
     name: 'filters',
     type: 'collection',
     placeholder: 'Add Field',
     default: {},
     options: [
       {
-        displayName: 'Sales Order ID',
-        name: 'id',
-        type: 'number',
-        default: 0,
-        placeholder: 'Sales Order ID',
-        description: 'Fetch a sales order by its ID.',
+        displayName: 'Closed',
+        name: 'isClosed',
+        type: 'boolean',
+        default: false,
+        placeholder: 'Closed',
+        description: 'Whether to fetch closed invoices only',
       },
       {
         displayName: 'Customer ID',
@@ -76,7 +76,7 @@ export const salesOrderOps: INodeProperties[] = [
         type: 'number',
         default: 0,
         placeholder: 'Customer ID',
-        description: 'Fetch sales orders by customer ID.',
+        description: 'Fetch invoices by customer ID',
       },
       {
         displayName: 'Customer Name',
@@ -84,7 +84,7 @@ export const salesOrderOps: INodeProperties[] = [
         type: 'string',
         default: '',
         placeholder: 'Customer Name',
-        description: 'Fetch sales orders by customer name.',
+        description: 'Fetch invoices by customer name',
       },
       {
         displayName: 'Customer Phone#',
@@ -92,20 +92,20 @@ export const salesOrderOps: INodeProperties[] = [
         type: 'string',
         default: '',
         placeholder: 'Phone#',
-        description: 'Fetch sales orders by customer\'s phone number.',
+        description: 'Fetch invoices by customer\'s phone number',
       },
       {
-        displayName: 'Closed',
-        name: 'isClosed',
-        type: 'boolean',
-        default: false,
-        placeholder: 'Closed',
-        description: 'Fetch either open or closed sales orders.',
+        displayName: 'Invoice ID',
+        name: 'id',
+        type: 'number',
+        default: 0,
+        placeholder: 'Invoice ID',
+        description: 'Fetch an invoice by its ID',
       }
     ],
     displayOptions: {
       show: {
-        resource: ['salesOrder'],
+        resource: ['invoice'],
         operation: ['getAll'],
       },
     },

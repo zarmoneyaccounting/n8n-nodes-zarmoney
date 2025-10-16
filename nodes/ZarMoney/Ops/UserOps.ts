@@ -15,13 +15,13 @@ export const userOps: INodeProperties[] = [
       {
         name: 'Get',
         value: 'get',
-        description: 'Returns a single user by ID.',
+        description: 'Returns a single user by ID',
         action: 'Get a user',
       },
       {
         name: 'Get Many',
         value: 'getAll',
-        description: 'Returns all users.',
+        description: 'Returns many users',
         action: 'Get many users',
       },
     ],
@@ -33,7 +33,7 @@ export const userOps: INodeProperties[] = [
     type: 'string',
     required: true,
     default: '',
-    description: 'The ID of the user to retrieve.',
+    description: 'The ID of the user to retrieve',
     displayOptions: {
       show: {
         resource: ['user'],
