@@ -6,8 +6,9 @@
     "n8n-community-node-package",
     "n8n",
     "zarmoney",
-    "trigger",
-    "actions"
+    "actions",
+    "triggers",
+    "automation"
   ],
   "license": "MIT",
   "homepage": "",
