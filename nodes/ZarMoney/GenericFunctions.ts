@@ -33,7 +33,7 @@ export async function zarmoneyApiRequest(
     Logger.info(`url: ${baseUrl}`);
     Logger.info(JSON.stringify(options));
 
-    return await this.helpers.requestWithAuthentication.call(this, credentialType, options);
+    return await this.helpers.httpRequestWithAuthentication.call(this, credentialType, options);
   } catch (error) {
     throw new NodeApiError(this.getNode(), error as JsonObject);
   }
