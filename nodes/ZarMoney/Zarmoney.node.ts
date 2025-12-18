@@ -141,11 +141,6 @@ export class Zarmoney implements INodeType {
         endpoint += '?' + toQueryString(mergedParams);
       }
 
-      Logger.info(`-------------------------`);
-      Logger.info(`Operation: ${operation}`);
-      Logger.info(`Resource: ${resource}`);
-      Logger.info(`Endpoint: ${endpoint}`);
-
       try {
         const responseData = await zarmoneyApiRequest.call(this, 'GET', endpoint, {});
         switch (resource) {

@@ -8,7 +8,7 @@ import type {
   IHttpRequestOptions,
 } from 'n8n-workflow';
 
-import { NodeApiError/*, NodeOperationError*/, LoggerProxy as Logger } from 'n8n-workflow';
+import { NodeApiError/*, NodeOperationError, LoggerProxy as Logger*/ } from 'n8n-workflow';
 
 export async function zarmoneyApiRequest(
   this: IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions,
@@ -29,9 +29,6 @@ export async function zarmoneyApiRequest(
 
     const baseUrl = credentials.server || 'https://api.zarmoney.com/api/v1';
     options.url = `${baseUrl}${endpoint}`;
-
-    Logger.info(`url: ${baseUrl}`);
-    Logger.info(JSON.stringify(options));
 
     return await this.helpers.httpRequestWithAuthentication.call(this, credentialType, options);
   } catch (error) {

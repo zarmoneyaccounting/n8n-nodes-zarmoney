@@ -6,7 +6,7 @@ import type {
   INodeTypeDescription,
   IWebhookResponseData,
 } from 'n8n-workflow';
-import { NodeConnectionTypes, /*NodeOperationError,*/ LoggerProxy as Logger } from 'n8n-workflow';
+import { NodeConnectionTypes, /*NodeOperationError, LoggerProxy as Logger*/ } from 'n8n-workflow';
 
 import { zarmoneyApiRequest, decapitalizeFirstLetter } from './GenericFunctions';
 
@@ -131,8 +131,6 @@ export class ZarmoneyTrigger implements INodeType {
   webhookMethods = {
     default: {
       async checkExists(this: IHookFunctions): Promise<boolean> {
-        Logger.info(`-------------------------checkExists`);
-
         const webhookUrl = this.getNodeWebhookUrl('default') as string;
 
         const webhookData = this.getWorkflowStaticData('node');
@@ -147,8 +145,6 @@ export class ZarmoneyTrigger implements INodeType {
       },
 
       async create(this: IHookFunctions): Promise<boolean> {
-        Logger.info(`-------------------------create`);
-
         const eventData = [] as any;
 
         const events = this.getNodeParameter('events', []) as string[];
@@ -167,8 +163,6 @@ export class ZarmoneyTrigger implements INodeType {
         });
 
         const webhookUrl = this.getNodeWebhookUrl('default') as string;
-        Logger.info(`webhookUrl: ${webhookUrl}`);
-        Logger.info(`events: ${JSON.stringify(eventData, null, 2)}`);
 
         try {
           const body = { endpoint: webhookUrl, active: true, events: eventData };
@@ -177,8 +171,6 @@ export class ZarmoneyTrigger implements INodeType {
           if (!responseData) {
             return false;
           }
-
-          Logger.info(JSON.stringify(responseData, null, 2));
 
           const webhookData = this.getWorkflowStaticData('node');
           webhookData.webhookId = responseData.id as number;
@@ -193,9 +185,6 @@ export class ZarmoneyTrigger implements INodeType {
 
       async delete(this: IHookFunctions): Promise<boolean> {
         const webhookData = this.getWorkflowStaticData('node');
-
-        Logger.info(`-------------------------delete`);
-        Logger.info(`webhookData: ${JSON.stringify(webhookData, null, 2)}`);
 
         if (webhookData?.webhookId) {
           try {
@@ -215,9 +204,8 @@ export class ZarmoneyTrigger implements INodeType {
   };
 
   async webhook(this: IWebhookFunctions): Promise<IWebhookResponseData> {
-    Logger.info(`-------------------------webhook called`);
     const bodyData = this.getBodyData();
-    const headerData = this.getHeaderData() as IDataObject;
+    //const headerData = this.getHeaderData() as IDataObject;
     const req = this.getRequestObject();
 
     const webhookData = this.getWorkflowStaticData('node');
@@ -225,20 +213,15 @@ export class ZarmoneyTrigger implements INodeType {
       return {};
     }
 
-    const { 'zarmoney-signature': signature } = headerData;
-    const { name: eventName, operation, entityIds } = bodyData;
+    //const { 'zarmoney-signature': signature } = headerData;
+    const { name: eventName, operation/*, entityIds*/ } = bodyData;
 
     const eventOp = decapitalizeFirstLetter(operation as string);
-
-    Logger.info(`eventName: ${eventName}, eventOp: ${eventOp}, entityIds: ${entityIds}`);
-    Logger.info(`webhookData.events: ${JSON.stringify(webhookData.events, null, 2)}`);
 
     const found = (webhookData.events as []).find((ed: any) => ed.eventId === eventName && ed[eventOp] === true);
     if (!found) {
       return {};
     }
-
-    Logger.info(`zarmoneySignature: ${signature}`);
 
     return {
       workflowData: [this.helpers.returnJsonArray(req.body as IDataObject)],
