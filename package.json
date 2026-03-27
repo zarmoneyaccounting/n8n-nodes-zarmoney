@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-zarmoney",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This package lets you use ZarMoney in your n8n workflows.",
   "keywords": [
     "n8n-community-node-package",
