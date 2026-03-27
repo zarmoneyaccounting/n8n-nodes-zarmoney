@@ -161,7 +161,16 @@ export class Zarmoney implements INodeType {
 
         returnData.push(...executionData);
       } catch (error) {
-        Logger.error(error);
+				Logger.error(error);
+				if (this.continueOnFail()) {
+					const err = error as { message?: string };
+					returnData.push({
+						json: { error: err.message ?? 'Unknown error' },
+						pairedItem: { item: i },
+					});
+					continue;
+				}
+				throw error;
       }
     }
 
