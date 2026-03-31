@@ -6,7 +6,7 @@ import type {
   IDataObject
 } from 'n8n-workflow';
 
-import { NodeConnectionTypes, /*NodeOperationError,*/ LoggerProxy as Logger } from 'n8n-workflow';
+import { NodeConnectionTypes, /*NodeOperationError, LoggerProxy as Logger */ } from 'n8n-workflow';
 
 import {
   zarmoneyApiRequest,
@@ -161,7 +161,6 @@ export class Zarmoney implements INodeType {
 
         returnData.push(...executionData);
       } catch (error) {
-				Logger.error(error);
 				if (this.continueOnFail()) {
 					const err = error as { message?: string };
 					returnData.push({
