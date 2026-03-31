@@ -1,4 +1,5 @@
 import {
+  Icon,
   ICredentialType,
   INodeProperties,
 } from 'n8n-workflow';
@@ -8,6 +9,7 @@ export class ZarMoneyOAuth2Api implements ICredentialType {
   extends = ['oAuth2Api'];
   displayName = 'ZarMoney OAuth2 API';
   documentationUrl = 'https://docs.zarmoney.com';
+  icon = 'file:zarmoney.svg' as Icon;
 
   properties: INodeProperties[] = [
     {
