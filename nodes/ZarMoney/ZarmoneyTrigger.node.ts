@@ -177,7 +177,7 @@ export class ZarmoneyTrigger implements INodeType {
           webhookData.events = eventData as any[];
         }
         catch (error) {
-          return false;
+          throw error;
         }
 
         return true;
