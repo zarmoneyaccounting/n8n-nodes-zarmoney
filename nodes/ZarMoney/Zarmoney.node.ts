@@ -64,10 +64,6 @@ export class Zarmoney implements INodeType {
         noDataExpression: true,
         options: [
           {
-            name: 'User',
-            value: 'user'
-          },
-          {
             name: 'Estimate',
             value: 'estimate'
           },
@@ -78,6 +74,10 @@ export class Zarmoney implements INodeType {
           {
             name: 'Sales Order',
             value: 'salesOrder'
+          },
+          {
+            name: 'User',
+            value: 'user'
           },
         ],
         default: 'estimate'
